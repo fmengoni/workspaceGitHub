@@ -1,0 +1,11 @@
+18/07/2016 - Se cambiaron las columnas hightbyte y lowbyte de la tabla luminarias
+
+-- LUMINARIAS AUDIT --
+ALTER TABLE `luminarias`.`luminariasaudit` 
+CHANGE COLUMN `feRegistro` `fe_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '' ,
+CHANGE COLUMN `hightByte` `hight` INT(11) NULL DEFAULT NULL COMMENT '' ,
+CHANGE COLUMN `lowByte` `low` INT(11) NULL DEFAULT NULL COMMENT '' ,
+CHANGE COLUMN `lumiContextH` `lumi_context_h` INT NULL DEFAULT NULL COMMENT '' ,
+CHANGE COLUMN `lumiContextL` `lumi_context_l` INT(11) NULL DEFAULT NULL COMMENT '' ,
+CHANGE COLUMN `nodoId` `nodo_id` VARCHAR(30) NOT NULL COMMENT '' ;
+-- FIN LUMINARIAS AUDIT --
