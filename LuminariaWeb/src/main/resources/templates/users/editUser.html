@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body>
+	<!-- Header -->
+	<header th:replace="fragments/contentHeader :: contentHeader"></header>
+
+	<div id="container">
+		<div th:replace="fragments/contentMenu :: contentMenu"></div>
+		
+		<div id="content">
+			<div class="container">
+				<!-- Breadcrumbs line -->
+				<div class="crumbs">
+					<ul id="breadcrumbs" class="breadcrumb">
+						<li>
+							<i class="icon-home"></i>
+							<a href="index.html">Dashboard</a>
+						</li>
+						<li class="current">
+							<a href="pages_calendar.html" title="">Calendar</a>
+						</li>
+					</ul>
+
+					<ul class="crumb-buttons">
+						<li><a href="charts.html" title=""><i class="icon-signal"></i><span>Statistics</span></a></li>
+						<li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="icon-tasks"></i><span>Users <strong>(+3)</strong></span><i class="icon-angle-down left-padding"></i></a>
+							<ul class="dropdown-menu pull-right">
+							<li><a href="form_components.html" title=""><i class="icon-plus"></i>Add new User</a></li>
+							<li><a href="tables_dynamic.html" title=""><i class="icon-reorder"></i>Overview</a></li>
+							</ul>
+						</li>
+						<li class="range"><a href="#">
+							<i class="icon-calendar"></i>
+							<span></span>
+							<i class="icon-angle-down"></i>
+						</a></li>
+					</ul>
+				</div>
+				<!-- /Breadcrumbs line -->
+
+				<!--=== Page Header ===-->
+				<div class="page-header">
+					<div class="page-title">
+						<h3>Editar perfil</h3>
+					</div>
+				</div>
+				<!-- /Page Header -->
+
+				<!--=== Page Content ===-->
+				<!--=== Inline Tabs ===-->
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Tabs-->
+						<div class="tabbable tabbable-custom tabbable-full-width">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tab_edit_account" data-toggle="tab">Datos principales</a></li>
+								<!-- <li><a href="#tab_nodos" data-toggle="tab">Nodos</a></li> -->
+							</ul>
+							<div class="tab-content row">
+								<!--=== Edit Account ===-->
+								<div class="tab-pane active" id="tab_edit_account">
+									<form class="form-horizontal" th:action="@{/users/editUser}" th:object="${viewUser}" method="post">
+										<input type="hidden" name="userpk" th:field="*{pk}" th:value="${viewUser.pk}"></input>
+										<div class="col-md-12 form-vertical no-margin">
+											<div class="widget">
+												<div class="widget-header">
+													<h4>Configuraci&oacute;n</h4>
+												</div>
+												<div class="widget-content">
+													<div class="row">
+														<div class="col-md-4 col-lg-2">
+															<strong class="subtitle padding-top-10px">Usuario activo</strong>
+															<p class="text-muted"></p>
+														</div>
+														<div class="col-md-8 col-lg-10">
+															<div class="form-group">
+																<label class="checkbox">
+																	<input type="checkbox" class="uniform" th:value="${viewUser.enabled}" th:field="*{enabled}"></input>
+																</label>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-4 col-lg-2">
+															<strong class="subtitle padding-top-10px">Nombre de usuario</strong>
+															<p class="text-muted">nombre utilizado para ingresar al sistema</p>
+														</div>
+
+														<div class="col-md-8 col-lg-10">
+															<div class="form-group">
+																<label class="control-label padding-top-10px">Usuario:</label>
+																<input type="text" name="username" class="form-control" th:value="${viewUser.usuario}" disabled="disabled"></input>
+															</div>
+														</div>
+													</div> <!-- /.row -->
+													<div class="row">
+														<div class="col-md-4 col-lg-2">
+															<strong class="subtitle">Cambiar clave</strong>
+															<p class="text-muted"></p>
+														</div>
+
+														<div class="col-md-8 col-lg-10">
+															<!-- 
+															<div class="form-group">
+																<label class="control-label">Clave actual:</label>
+																<input type="password" name="old_password" class="form-control" placeholder="Clave actual" th:field="*{claveActual}"></input>
+															</div> 
+															-->
+
+															<div class="form-group">
+																<label class="control-label">Clave nueva:</label>
+																<input type="password" name="new_password" class="form-control" placeholder="Clave nueva" th:field="*{claveNueva}"></input>
+															</div>
+
+															<div class="form-group">
+																<label class="control-label">Repita Clave nueva:</label>
+																<input type="password" name="new_password_repeat" class="form-control" placeholder="Clave nueva" th:field="*{repitaClaveNueva}"></input>
+															</div>
+															
+															<div class="form-group">
+																<div th:if="${successMessage != null}" class="alert fade in alert-success">
+																	<i class="icon-remove close" data-dismiss="alert"></i>
+														            <span th:text="${successMessage}"></span>
+														        </div>
+														        <div th:if="${errorMessage != null}" class="alert fade in alert-danger">
+																	<i class="icon-remove close" data-dismiss="alert"></i>
+														            <span th:text="${errorMessage}"></span>
+														        </div>
+															</div>
+														</div>
+													</div> <!-- /.row -->
+												</div> <!-- /.widget-content -->
+											</div> <!-- /.widget -->
+
+											<div class="form-actions">
+												<input type="submit" value="Actualizar" class="btn btn-primary pull-right"></input>
+											</div>
+										</div> <!-- /.col-md-12 -->
+									</form>
+								</div>
+								<!-- /Edit Account -->
+								<!-- === NODOS === -->
+								<!-- 
+								<div class="tab-pane active" id="tab_nodos">
+									
+								</div>
+								 -->
+								<!-- === /NODOS === -->
+							</div> <!-- /.tab-content -->
+						</div>
+						<!--END TABS-->
+					</div>
+				</div> <!-- /.row -->
+				<!-- /Page Content -->
+				
+				<!--Forms -->
+			</div>
+			<!-- /.container -->
+
+		</div>
+	</div>
+	</body>
+</html>

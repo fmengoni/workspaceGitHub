@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head></head>
+
+	<body>
+		<div id="sidebar" class="sidebar-fixed" th:fragment="contentMenu">
+			<div id="sidebar-content">
+				<!--=== Navigation ===-->
+				<ul id="nav">
+					<li class="current" >
+						<a th:href="@{/dashboard}">
+							<i class="icon-dashboard"></i>
+							Dashboard
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<i class="icon-desktop"></i>
+							Administrar usuarios
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a th:href="@{/users/listUsers}">
+								<i class="icon-angle-right"></i>
+								Listar
+								</a>
+							</li>
+							<li>
+								<a th:href="@{/users/register}">
+								<i class="icon-angle-right"></i>
+								Registrar nuevo usuario
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<i class="icon-desktop"></i>
+							Administrar luminarias
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a th:href="@{/lumiAdmin/posicionarLuminarias}">
+								<i class="icon-angle-right"></i>
+								Posicionar luminarias
+								</a>
+							</li>
+							<!-- 
+							<li>
+								<a href="/register">
+								<i class="icon-angle-right"></i>
+								Registrar nuevo usuario
+								</a>
+							</li>
+							 -->
+						</ul>
+					</li>
+				</ul>
+				
+				<!-- /Navigation -->
+				<div class="sidebar-widget align-center">
+					<div class="btn-group" data-toggle="buttons" id="theme-switcher">
+						<label class="btn active">
+							<input type="radio" name="theme-switcher" data-theme="bright"/><i class="icon-sun"></i> Bright
+						</label>
+						<label class="btn">
+							<input type="radio" name="theme-switcher" data-theme="dark"/><i class="icon-moon"></i> Dark
+						</label>
+					</div>
+				</div>
+
+			</div>
+			<div id="divider" class="resizeable"></div>
+		</div>
+		<!-- /Sidebar -->
+	</body>
+</html>

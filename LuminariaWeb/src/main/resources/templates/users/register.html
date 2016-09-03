@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body>
+	<!-- Header -->
+	<header th:replace="fragments/contentHeader :: contentHeader"></header>
+
+	<div id="container">
+		<div th:replace="fragments/contentMenu :: contentMenu"></div>
+
+		<div id="content">
+			<div class="container">
+				<!-- Breadcrumbs line -->
+				<div class="crumbs">
+					<ul id="breadcrumbs" class="breadcrumb">
+						<li>
+							<i class="icon-home"></i>
+							<a href="index.html">Dashboard</a>
+						</li>
+						<li class="current">
+							<a href="pages_calendar.html" title="">Calendar</a>
+						</li>
+					</ul>
+
+					<ul class="crumb-buttons">
+						<li><a href="charts.html" title=""><i class="icon-signal"></i><span>Statistics</span></a></li>
+						<li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="icon-tasks"></i><span>Users <strong>(+3)</strong></span><i class="icon-angle-down left-padding"></i></a>
+							<ul class="dropdown-menu pull-right">
+							<li><a href="form_components.html" title=""><i class="icon-plus"></i>Add new User</a></li>
+							<li><a href="tables_dynamic.html" title=""><i class="icon-reorder"></i>Overview</a></li>
+							</ul>
+						</li>
+						<li class="range"><a href="#">
+							<i class="icon-calendar"></i>
+							<span></span>
+							<i class="icon-angle-down"></i>
+						</a></li>
+					</ul>
+				</div>
+				<!-- /Breadcrumbs line -->
+
+				<!--=== Page Header ===-->
+				<div class="page-header">
+					<div class="page-title">
+						<h3>Registrar nuevo usuario</h3>
+					</div>
+				</div>
+				<!-- /Page Header -->
+
+				<!--=== Page Content ===-->
+				<!--=== Full Size Inputs ===-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="widget box">
+							<div class="widget-header">
+								<h4><i class="icon-reorder"></i> Datos del nuevo usuario</h4>
+							</div>
+							<div class="widget-content">
+								<form class="form-horizontal row-border" action="#" th:action="@{/users/register}" th:object="${user}" method="post">
+									<div class="form-group">
+										<label class="col-md-2 control-label">Usuario:</label>
+										<div class="col-md-4"><input type="text" th:field="*{username}" name="regular" class="form-control"></input></div>
+										<label class="col-md-2 control-label">Clave:</label>
+										<div class="col-md-4"><input type="text" th:field="*{password}" name="regular" class="form-control"></input></div>
+									</div>
+									<div class="form-group">
+										<div th:if="${errorMessage != null}" class="alert fade in alert-danger">
+											<i class="icon-remove close" data-dismiss="alert"></i>
+								            <span th:text="${errorMessage}"></span>
+								        </div>
+								        <div th:if="${successMessage != null}" class="alert fade in alert-success">
+											<i class="icon-remove close" data-dismiss="alert"></i>
+								            <span th:text="${successMessage}"></span>
+								        </div>
+									</div>
+									<div class="form-actions">
+										<input type="submit" value="Registrar" class="btn btn-primary pull-right"></input>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Forms -->
+			</div>
+			<!-- /.container -->
+
+		</div>
+	</div>
+
+</body>
+</html>
